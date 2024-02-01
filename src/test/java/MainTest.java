@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,6 +20,7 @@ class MainTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("end".getBytes());
         System.setIn(inputStream);
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             // Доход, ОР
@@ -32,6 +34,7 @@ class MainTest {
         assertEquals(expectedValue, result);
 
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             // Доход, расход, ОР
@@ -50,6 +53,7 @@ class MainTest {
         Main.dialogueWithUser();
         assertTrue(outputStreamCaptor.toString().trim().contains("Программа завершена!"));
     }
+
     @AfterAll
     static void afterAll() {
         System.setOut(standardOut);
